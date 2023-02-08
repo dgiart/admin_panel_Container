@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  create new citizen
+{% endblock %}
+
+{% block content_title %}
+  new citizen
+{% endblock %}
+
+{% block content %}
+Введите данные в формате:<br>
+                           1. ФИО.
+                           2. Телефон.
+                           3. Дату рождения (дд.мм.гггг).
+                           4. Адрес.
+                           5. Число проживающих.
+                           6. ФИО и возраст проживающих.
+                           7. Есть ли среди проживающих инвалиды?
+                           8. Есть ли дети?
+                           9. Если есть, укажите возраст
+                           10. Нужны ли продукты питания?
+                           11. Вода?
+                           12. Лекарства?
+                           13. Укажите количество.
+                           14. Средства личной гигиены?
+                           15. Укажите количество.
+                           16. Памперсы?
+                           17. Особенности диеты и т.п.
+                           18. Даю согласие на обработку персональных данных.
+                           19. Даю согласие на фото/видео.
+<div class="col-md-6">
+  <form  action="{{url_for('citizen_create')}}" method="POST">
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label(class='control-label') }}
+        {{ field(class='form-control') }}
+
+      </div>
+    {% endfor %}
+    <button type="submit" class='btn btn-success'> Сохранить </button>
+  </form>
+</div>
+
+
+{% endblock %}

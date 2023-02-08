@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<nav>
+     <form class="d-flex" role="search" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ request.args.get('q', '') }}">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      </div>
+</nav>
+
+<p>
+    Введите название улицы.
+</p>
+
+{% if pers_info|length>0 %}
+{% for el in pers_info %}
+Фамилия: <a href="{{url_for('cit_detail', id=el['_id'])}}">{{ el['fio']['family'] }}</a>, Имя: {{ el['fio']['name'] }}, Отчество: {{ el['fio']['paternal'] }}, Дата рождения: {{ el['birth'] }},  Телефон: {{ el['phone'] }},  Улица: {{ el['addr']['street'] }}.
+
+<p>
+{% endfor %}
+{% else %}
+    Нет людей с этой улицы.
+{% endif %}
+{% endblock %}
